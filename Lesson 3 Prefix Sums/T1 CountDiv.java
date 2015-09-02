@@ -1,6 +1,6 @@
-//  https://codility.com/programmers/lessons/1
-//  FrogJmp
-//  Test report: https://codility.com/demo/results/demoNPHZ6Y-M2U/
+//  https://codility.com/programmers/lessons/3
+//  CountDiv
+//  test report: https://codility.com/demo/results/demoDTSJK4-2B7/
 
 class Solution {     
 	public int solution(int X, int Y, int D) {         
