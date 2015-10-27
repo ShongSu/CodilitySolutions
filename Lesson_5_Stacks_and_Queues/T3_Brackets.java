@@ -2,33 +2,36 @@
 //  Brackets
 //  test report: https://codility.com/demo/results/demo5AGNUZ-P2K/
 
-import java.util.*;
+import java.util.*;  
 
-class Solution {
-    public int solution(int[] H) {
-        // write your code in Java SE 8
-        int length = H.length;
-        int count = 0;
-        Stack<Integer> stack = new Stack<Integer>();         
-        if(length <= 1)
-            return length;
-        for(int i=0;i<length;i++)
-        {
-            while(!stack.empty() && H[i]<stack.peek())
-            {
-                stack.pop();
-                count++;
-            }
-            
-            if(stack.empty())
-                stack.push(H[i]);
-            
-            if(H[i]>stack.peek())
-                stack.push(H[i]);
-
-        }
-        count+=stack.size();
-        return count;
-
-    }
+class Solution {     
+    public int solution(String S) {         
+        // write your code in Java SE 8         
+        int length = S.length();         
+        if(length % 2 != 0)             
+            return 0;         
+        char[] c=new char[length];         
+        c=S.toCharArray();         
+        Stack<Character> stack= new Stack<Character> ();
+        for(int i=0;i<length;i++)         
+        {             
+            if(stack.empty())             
+            {                 
+                if(c[i]=='('||c[i]=='['||c[i]=='{')                 
+                    stack.push(c[i]);                 
+                if(c[i]==')')                     
+                    return 0;             
+            }             
+            else              
+            {                 
+                if(c[i]=='('||c[i]=='['||c[i]=='{')                 
+                    stack.push(c[i]);                 
+                if((c[i]==')'&&stack.peek()=='(')||(c[i]==']'&&stack.peek()=='[')||(c[i]=='}'&&stack.peek()=='{'))                 
+                    stack.pop();             
+            }         
+        }         
+        if(stack.empty())             
+            return 1;         
+        else return 0;     
+    } 
 }
